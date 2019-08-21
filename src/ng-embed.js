@@ -331,7 +331,10 @@
                         // show only youtube video if both vimeo and youtube videos are present.
                         return videoProcess.youtubeEmbed(data, options)
                             .catch(function() {
-                                return videoProcess.vimeoEmbed(data, options);
+                                return videoProcess.vimeoEmbed(data, options)
+                                    .catch(function() {
+                                        return data;
+                                    });
                             });
                     },
 
